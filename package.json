@@ -1,0 +1,29 @@
+{
+  "name": "scallion-recipe-management",
+  "version": "1.0.0",
+  "description": "recipe management api ",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tr00gle/scallion-recipe-management.git"
+  },
+  "author": "trontz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tr00gle/scallion-recipe-management/issues"
+  },
+  "homepage": "https://github.com/tr00gle/scallion-recipe-management#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "install": "^0.12.2",
+    "npm": "^6.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
