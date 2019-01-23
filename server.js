@@ -4,28 +4,36 @@ const bodyParser = require('body-parser');
 const express = require('express');
 
 const app = express();
-const port = pocess.env.PORT || process.argv[2] || 8000;
+const PORT = process.argv[2] || 8000;
 
-app.use(bodyParser.json());
+app.use(express.json());
 
-app.get('/', /* cb */)
+app.get('/scallion', (req, res) => {
+  res.send('hello, scallion!');
+})
 
 app.get('/recipes', (req, res) => {
+  res.send('request received');
   console.log(`get request to recipes`);
 })
 app.post('/recipes', (req, res) => {
-  console.log(`post request to recipes`);
+  res.status(201);
+  res.send(req.body);
+  console.log(`${JSON.stringify(req.body)}`);
 })
 app.get('/recipes/:id', (req, res) => {
+  res.send('request received');
   console.log(`get request to recipes/${req.params.id}`);
 })
 app.put('/recipes/:id', (req, res) => {
+  res.send('request received');
   console.log(`put request to recipes/${req.params.id}`);
 })
 app.delete('/recipes/:id', (req, res) => {
+  res.send('request received');
   console.log(`delete request to recrecipes/${req.params.id}ipes`);
 })
 
 
 
-http.createServer(app).listen(PORT, () => console.log(`we are listening for requests on port ${port}`));
+app.listen(PORT, () => console.log(`we are listening for scallions on port ${PORT}`));
