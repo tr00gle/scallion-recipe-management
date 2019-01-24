@@ -34,7 +34,7 @@ function updateRecipe(req, res, next) {
 function deleteRecipe(req, res, next) {
   const { id } = req.params;
   res.locals.deleted = res.locals.recipes.data.recipes[id].name
-  delete res.locals.recipes.data.recipes[id]
+  res.locals.recipes.data.recipes[id] = {};
   next();
 };
 
