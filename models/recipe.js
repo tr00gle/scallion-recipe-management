@@ -11,10 +11,15 @@ function readRecipes(req, res, next) {
   });
 }
 
+function send(req, res, next) {
+  res.status(200);
+  res.send(res.locals.requestedRecipe || res.locals.recipes);
+}
+
 function getRecipe(req, res, next) {
   const { id } = req.params;
   const requestedRecipe = res.locals.recipes.data.recipes[id];
-  res.locals.requested = requestedRecipe;
+  res.locals = { requestedRecipe,...res.locals };
   next();
 }
 
@@ -27,16 +32,25 @@ function addRecipe(req, res, next) {
   next();
 }
 
-// update recipe functions can be their own group here 
+function confirmCreation(req, res, next) {
+  res.status(201);
+  res.send(`saved ${res.locals.newRecipeName}!!`)
+}
+
+
 
 
 function deleteRecipe(req, res, next) {
   const { id } = req.params;
   res.locals.deleted = res.locals.recipes.data.recipes[id].name
-  // how else can we do this? 
   res.locals.recipes.data.recipes[id] = {};
   next();
 };
+
+function confirmDeletion(req, res, next) {
+  res.send(`successfully deleted ${res.locals.deleted}`);
+}
+
 
 function saveRecipes(req, res, next) {
   let { recipes } = res.locals;
@@ -51,9 +65,10 @@ function saveRecipes(req, res, next) {
 
 module.exports = {
   readRecipes,
+  send,
   getRecipe,
   addRecipe,
-  updateRecipe,
+  confirmCreation,
   deleteRecipe,
   saveRecipes
 }
