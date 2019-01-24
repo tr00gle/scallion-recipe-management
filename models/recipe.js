@@ -6,7 +6,6 @@ function readAll(req, res, next) {
     if (err) next(err);
     data = JSON.parse(data);
     res.locals.recipes = data;
-    console.log('read correctly');
     next();
   });
 }
