@@ -1,5 +1,6 @@
 
 const express = require('express');
+const { onError, onListen } = require('./utils');
 const { readAll, 
         send,
         getById, 
@@ -27,13 +28,9 @@ app.put('/recipes/:id', (req, res) => {
 })
 app.delete('/recipes/:id', readAll, deleteRecipe, saveAll, confirmDeletion);
 
-function onError(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: app.get('env') === 'development' ? err : {}
-  });
-}
-app.use(onError);
+
+
+
+app.use(onError(app));
   
-app.listen(PORT, () => console.log(`we are listening for scallions on port ${PORT}`));
+app.listen(onListen(PORT));
