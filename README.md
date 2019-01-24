@@ -14,8 +14,8 @@
 
 ### Set up your project: 
 1. If you'd like to download a ZIP file 
-  - Change current branch from `master` to `start-workshop`
-  - unzip contents and move to your code directory
+    - Change current branch from `master` to `start-workshop`
+    - unzip contents and move to your code directory
 2. *Recommended*: clone the repo via git cli 
   - `cd <YOUR CODE DIRECTORY>`
   - `git clone https://github.com/tr00gle/scallion-recipe-management.git`
