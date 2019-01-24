@@ -22,6 +22,7 @@
 3. `cd` to the scallion project direcotry 
 4. `npm install`
 5. Open directory in code editor of your choice 
+6. If you took option 2, checkout the `start-workshop` branch
 
 ## Agenda
 1. Get setup 

@@ -36,9 +36,6 @@ function confirmCreation(req, res, next) {
   res.send(`saved ${res.locals.newRecipeName}!!`)
 }
 
-
-
-
 function deleteRecipe(req, res, next) {
   const { id } = req.params;
   res.locals.deleted = res.locals.recipes.data.recipes[id].name
