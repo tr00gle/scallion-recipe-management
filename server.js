@@ -1,44 +1,32 @@
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const { readRecipes, 
-        getRecipe, 
-        addRecipe, 
-        updateRecipe,
-        deleteRecipe,
-        saveRecipes, 
-      } = require('./models/recipe');
+// require express
+// require body parser
+// import function from the recipe model 
 
-const app = express();
-const PORT = process.argv[2] || 8000;
-
-app.use(bodyParser.json());
-
-app.get('/scallion', (req, res) => {
-  res.send('hello, scallion!');
-})
-
-app.get('/recipes', readRecipes, (req, res, next) => {
-  res.status(200);
-  res.send(res.locals.recipes);
-})
-app.post('/recipes', readRecipes, addRecipe, saveRecipes, (req, res) => {
-  res.status(201);
-  res.send(`saved ${res.locals.newRecipeName}!!`);
-})
-app.get('/recipes/:id', readRecipes, getRecipe, (req, res) => {
-  res.send(res.locals.requested);
-  console.log(`get request to recipes/${req.params.id}`);
-})
-app.put('/recipes/:id', (req, res) => {
-  res.send('request received');
-  console.log(`put request to recipes/${req.params.id}`);
-})
-app.delete('/recipes/:id', readRecipes, deleteRecipe, saveRecipes, (req, res) => {
-  res.send(`deleted ${res.locals.deleted}`);
-  console.log(`delete request to recipes/${req.params.id}ipes`);
-})
+// instantiate the applciation       
 
 
+// set port constant 
 
-app.listen(PORT, () => console.log(`we are listening for scallions on port ${PORT}`));
+
+// use body parse for json 
+
+
+// hello scallion route here
+
+// get recipes 
+
+// post a recipe 
+
+// get a single recipe  by id
+
+
+// delete a recipe by id 
+
+// update a recipe by id 
+      // add ingredient? 
+      // change name? 
+      // delete ingredient?
+      // add/delete a step 
+
+// Listen here 
