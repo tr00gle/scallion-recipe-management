@@ -27,14 +27,14 @@ function addRecipe(req, res, next) {
   next();
 }
 
-function updateRecipe(req, res, next) {
+// update recipe functions can be their own group here 
 
-}
 
 function deleteRecipe(req, res, next) {
   const { id } = req.params;
   res.locals.deleted = res.locals.recipes.data.recipes[id].name
-  delete res.locals.recipes.data.recipes[id]
+  // how else can we do this? 
+  res.locals.recipes.data.recipes[id] = {};
   next();
 };
 
