@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 
-function readRecipes(req, res, next) {
+function readAll(req, res, next) {
   fs.readFile(__dirname + '/../recipes.json', 'utf8', (err, data) => {
     if (err) next(err);
     data = JSON.parse(data);
@@ -16,14 +16,14 @@ function send(req, res, next) {
   res.send(res.locals.requestedRecipe || res.locals.recipes);
 }
 
-function getRecipe(req, res, next) {
+function getById(req, res, next) {
   const { id } = req.params;
   const requestedRecipe = res.locals.recipes.data.recipes[id];
   res.locals = { requestedRecipe,...res.locals };
   next();
 }
 
-function addRecipe(req, res, next) {
+function addOne(req, res, next) {
   const newRecipe = req.body;
   const nextId = res.locals.recipes.data.nextId;
   res.locals.recipes.data.nextId++
@@ -52,7 +52,7 @@ function confirmDeletion(req, res, next) {
 }
 
 
-function saveRecipes(req, res, next) {
+function saveAll(req, res, next) {
   let { recipes } = res.locals;
   recipes = JSON.stringify(recipes);
   fs.writeFile(__dirname + '/../recipes.json', recipes, (err) => {
@@ -64,11 +64,12 @@ function saveRecipes(req, res, next) {
 
 
 module.exports = {
-  readRecipes,
+  readAll,
   send,
-  getRecipe,
-  addRecipe,
+  getById,
+  addOne,
   confirmCreation,
   deleteRecipe,
-  saveRecipes
+  confirmDeletion,
+  saveAll
 }
