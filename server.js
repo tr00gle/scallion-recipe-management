@@ -5,7 +5,6 @@ const { readAll,
         getById, 
         addOne, 
         confirmCreation,
-        updateRecipe,
         deleteRecipe,
         confirmDeletion,
         saveAll, 
@@ -20,13 +19,13 @@ app.get('/scallion', (req, res) => {
   res.send('hello, scallion!');
 })
 
-app.get('/recipes', readAll, send)
-app.post('/recipes', readAll, addOne, saveAll, confirmCreation)
+app.get('/recipes', readAll, send);
+app.post('/recipes', readAll, addOne, saveAll, confirmCreation);
 app.get('/recipes/:id', readAll, getById, send);
 app.put('/recipes/:id', (req, res) => {
   res.send('request received');
 })
-app.delete('/recipes/:id', readAll, deleteRecipe, saveAll, confirmDeletion)
+app.delete('/recipes/:id', readAll, deleteRecipe, saveAll, confirmDeletion);
 
 function onError(err, req, res, next) {
   res.status(err.status || 500);
