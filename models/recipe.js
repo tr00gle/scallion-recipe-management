@@ -10,7 +10,7 @@ function readAll(req, res, next) {
   });
 }
 
-function send(req, res, next) {
+function send(req, res) {
   res.status(200);
   res.send(res.locals.requestedRecipe || res.locals.recipes);
 }
@@ -31,7 +31,7 @@ function addOne(req, res, next) {
   next();
 }
 
-function confirmCreation(req, res, next) {
+function confirmCreation(req, res) {
   res.status(201);
   res.send(`saved ${res.locals.newRecipeName}!!`);
 }
@@ -43,10 +43,9 @@ function deleteRecipe(req, res, next) {
   next();
 }
 
-function confirmDeletion(req, res, next) {
+function confirmDeletion(req, res) {
   res.send(`successfully deleted ${res.locals.deleted}`);
 }
-
 
 function saveAll(req, res, next) {
   let { recipes } = res.locals;
@@ -57,7 +56,6 @@ function saveAll(req, res, next) {
   res.locals.message = 'Recipes Saved!';
   next();
 }
-
 
 module.exports = {
   readAll,

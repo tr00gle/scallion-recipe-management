@@ -4,6 +4,7 @@ function onListen(port) {
 }
 
 function onError(appInstance) {
+  // eslint-disable-next-line no-unused-vars
   return (err, req, res, next) => {
     const env = appInstance.get('env');
     res.status(err.status || 500);
