@@ -25,23 +25,23 @@ function getById(req, res, next) {
 function addOne(req, res, next) {
   const newRecipe = req.body;
   const nextId = res.locals.recipes.data.nextId;
-  res.locals.recipes.data.nextId++
+  res.locals.recipes.data.nextId++;
   res.locals.recipes.data.recipes[nextId] = newRecipe;
-  res.locals.newRecipeName = newRecipe.name
+  res.locals.newRecipeName = newRecipe.name;
   next();
 }
 
 function confirmCreation(req, res, next) {
   res.status(201);
-  res.send(`saved ${res.locals.newRecipeName}!!`)
+  res.send(`saved ${res.locals.newRecipeName}!!`);
 }
 
 function deleteRecipe(req, res, next) {
   const { id } = req.params;
-  res.locals.deleted = res.locals.recipes.data.recipes[id].name
+  res.locals.deleted = res.locals.recipes.data.recipes[id].name;
   res.locals.recipes.data.recipes[id] = {};
   next();
-};
+}
 
 function confirmDeletion(req, res, next) {
   res.send(`successfully deleted ${res.locals.deleted}`);
@@ -53,7 +53,7 @@ function saveAll(req, res, next) {
   recipes = JSON.stringify(recipes);
   fs.writeFile(__dirname + '/../recipes.json', recipes, (err) => {
     if (err) next(err);
-  })
+  });
   res.locals.message = 'Recipes Saved!';
   next();
 }
@@ -68,4 +68,4 @@ module.exports = {
   deleteRecipe,
   confirmDeletion,
   saveAll
-}
+};
