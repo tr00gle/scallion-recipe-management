@@ -1,7 +1,5 @@
 const { PORT } = require('./server')
 
-
-
 function onListen(port) {
   return () => console.log(`we are listening for scallions on port ${port}`)
 }
