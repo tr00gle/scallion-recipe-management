@@ -31,3 +31,6 @@
 4. Write your first `POST /recipes` route, and now experience the power of using a middleware *chain*
 5. Complete the CRUD quad-fecta!
 6. Tinker away! Start by expanding on editing an existing recipe!
+
+## Todo:
+* tests using node assertions
