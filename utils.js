@@ -1,5 +1,6 @@
+/* eslint-disable no-console */
 
-function onListen(port) { 
+function onListen(port) {
   return () => console.log(`we are listening for scallions on port ${port}`);
 }
 
@@ -10,7 +11,7 @@ function onError(appInstance) {
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
-      error: env === 'development' ? err : {}
+      error: env === 'development' ? err : {},
     });
   };
 }
