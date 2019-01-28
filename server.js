@@ -1,6 +1,6 @@
 
 const express = require('express');
-const { onError, onListen, onRequest } = require('./utils');
+const { onError, onListen } = require('./utils');
 const {
   readAll,
   send,
@@ -13,14 +13,14 @@ const {
 } = require('./models/recipe');
 
 const app = express();
-const PORT = process.argv[2] || 8000;
+const PORT = process.argv[2] || 5001;
 
 app.use(express.json());
 
-app.get('/', onRequest, (req, res) => {
+app.get('/', (req, res) => {
   res.send('hello, scallion!');
 });
-app.get('/recipes', onRequest, readAll, send);
+app.get('/recipes', readAll, send);
 app.post('/recipes', readAll, addOne, saveAll, confirmCreation);
 app.get('/recipes/:id', readAll, getById, send);
 app.put('/recipes/:id', (req, res) => {
@@ -29,4 +29,4 @@ app.put('/recipes/:id', (req, res) => {
 app.delete('/recipes/:id', readAll, deleteRecipe, saveAll, confirmDeletion);
 
 app.use(onError(app));
-app.listen(onListen(PORT));
+app.listen(PORT, onListen(PORT));
