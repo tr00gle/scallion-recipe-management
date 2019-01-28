@@ -2,7 +2,7 @@
 .DS_Store
 .AppleDouble
 .LSOverride
-
+coverage/
 # Icon must end with two \r
 Icon
 

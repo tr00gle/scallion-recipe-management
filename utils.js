@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
 
 function onListen(port) {
   return () => console.log(`we are listening for scallions on port ${port}`);
 }
 
 function onError(appInstance) {
-  // eslint-disable-next-line no-unused-vars
   return (err, req, res, next) => {
     const env = appInstance.get('env');
     res.status(err.status || 500);
@@ -21,8 +21,13 @@ function logError(err, req, res, next) {
   next(err);
 }
 
+function ifContainsError(err, req, res, next) {
+  return err ? 'yay' : 'sad';
+}
+
 module.exports = {
   onListen,
   onError,
   logError,
+  ifContainsError,
 };

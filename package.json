@@ -4,8 +4,10 @@
   "description": "recipe management api ",
   "main": "server.js",
   "scripts": {
-    "test": "test",
     "start": "nodemon server.js",
+    "test": "jest",
+    "testSrc": "jest src",
+    "coverage": "jest --collectCoverageFrom=src/**.js --coverage src",
     "eslintAll": "node_modules/.bin/eslint ..",
     "eslint": "node_modules/.bin/eslint",
     "pretest": "eslint --ignore-path .gitignore ."
@@ -30,6 +32,7 @@
     "eslint": "^5.12.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.15.0",
+    "jest": "^24.0.0",
     "nodemon": "^1.18.9"
   }
 }
