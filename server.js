@@ -1,6 +1,6 @@
 
 const express = require('express');
-const { onError, onListen } = require('./utils');
+const { onError, onListen, onRequest } = require('./utils');
 const {
   readAll,
   send,
@@ -17,10 +17,10 @@ const PORT = process.argv[2] || 8000;
 
 app.use(express.json());
 
-app.get('/scallion', (req, res) => {
+app.get('/', onRequest, (req, res) => {
   res.send('hello, scallion!');
 });
-app.get('/recipes', readAll, send);
+app.get('/recipes', onRequest, readAll, send);
 app.post('/recipes', readAll, addOne, saveAll, confirmCreation);
 app.get('/recipes/:id', readAll, getById, send);
 app.put('/recipes/:id', (req, res) => {

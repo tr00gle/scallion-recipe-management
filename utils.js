@@ -16,7 +16,13 @@ function onError(appInstance) {
   };
 }
 
+function onRequest(req, res, next) {
+  console.log(`${req.method} request received to ${req.url}`);
+  next();
+}
+
 module.exports = {
   onListen,
   onError,
+  onRequest,
 };
