@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "test",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "pretest": "echo 'hi'"
   },
   "repository": {
     "type": "git",
