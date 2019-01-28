@@ -1,6 +1,6 @@
 
 const express = require('express');
-const { onError, onListen } = require('./utils');
+const { onError, onListen, logError } = require('./utils');
 const {
   readAll,
   send,
@@ -28,5 +28,5 @@ app.put('/recipes/:id', (req, res) => {
 });
 app.delete('/recipes/:id', readAll, deleteRecipe, saveAll, confirmDeletion);
 
-app.use(onError(app));
+app.use(logError, onError(app));
 app.listen(PORT, onListen(PORT));
